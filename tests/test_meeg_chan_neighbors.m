@@ -20,13 +20,9 @@ function test_meeg_neighbors()
     props=get_props();
     n=numel(props);
 
-    % test a subset
-    ntest=round(n*.5);
-
-
-    % test a subset for fieldtrip
-    % (fieldtrip is very slow, so testing all would take too long)
-    ntest_fieldtrip=1;
+    % test all layouts. (This takes a long itme)
+    ntest_fieldtrip=numel(props);
+    ntest=ntest_fieldtrip;
 
     % visit in random order
     rp=randperm(n);
