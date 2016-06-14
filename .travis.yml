@@ -92,6 +92,7 @@ install:
     # optionally install FieldTrip
     - if [[ " $EXTERNALS " = *" fieldtrip "* ]]; then
           rm -rf fieldtrip;
+          git clone git://github.com/fieldtrip/fieldtrip.git;
           $OCTAVE --eval "cd('${PTH}/fieldtrip');
                             ft_defaults();
                             savepath();";
