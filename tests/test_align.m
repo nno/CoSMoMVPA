@@ -67,11 +67,6 @@ function test_align_basics
 
     aet({'b','c','d','d'},{'d','b','c','d'});
 
-    disp('warning state');
-    w=warning();
-    for k=1:numel(w)
-        disp(w(k));
-    end
 
 function test_align_multiple_nans
     n_rows_half=20+ceil(rand()*20);

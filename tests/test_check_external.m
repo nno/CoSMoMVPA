@@ -9,11 +9,6 @@ function test_suite=test_check_external()
 function test_check_external_nifti()
     % nifti comes with CoSMoMVPA, so should always be available if the path
     % is set properly
-    disp('warning state');
-    w=warning();
-    for k=1:numel(w)
-        disp(w(k));
-    end
 
     warning_state=cosmo_warning();
     orig_path=path();
@@ -63,11 +58,6 @@ function test_check_external_mocov()
     has_mocov=~isempty(which('mocov'));
     assertEqual(has_mocov,cosmo_check_external('mocov',false));
 
-    disp('warning state');
-    w=warning();
-    for k=1:numel(w)
-        disp(w(k));
-    end
 
 function test_check_external_command()
     commands={'foo','basdfds','disp'};
