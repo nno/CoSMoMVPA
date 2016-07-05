@@ -8,6 +8,7 @@ function test_suite = test_stat
 
 
 function test_stat_correspondence
+    disp('Warning state:');w=warning();for k=1:numel(w), disp(w(k)); end
     is_matlab=cosmo_wtf('is_matlab');
 
     if isempty(which('ttest'))
@@ -113,6 +114,7 @@ function test_stat_correspondence
 
 
 function test_stat_contrast()
+disp('Warning state:');w=warning();for k=1:numel(w), disp(w(k)); end
     ds=cosmo_synthetic_dataset('nchunks',6,'ntargets',4,'sigma',0);
     ds.sa.contrast=zeros(size(ds.sa.targets));
     ds.sa.contrast(ds.sa.targets==2)=1;
@@ -185,6 +187,7 @@ function short_args=remove_keys_from_arguments(skip_count,keys,args)
 
 
 function test_stat_exceptions()
+disp('Warning state:');w=warning();for k=1:numel(w), disp(w(k)); end
     ds=cosmo_synthetic_dataset('ntargets',3);
     aet=@(varargin)assertExceptionThrown(@()...
                             cosmo_stat(varargin{:}),'');
@@ -198,6 +201,7 @@ function test_stat_exceptions()
 
 
 function test_stat_regression()
+disp('Warning state:');w=warning();for k=1:numel(w), disp(w(k)); end
     ds=cosmo_synthetic_dataset('nchunks',6,'ntargets',4,'sigma',0);
     ds=cosmo_slice(ds,[2 6],2);
 
