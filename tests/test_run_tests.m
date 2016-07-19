@@ -64,7 +64,6 @@ function [result,output]=helper_run_tests(args)
     orig_pwd=pwd();
     log_fn=tempname();
 
-    run_sequentially=@(varargin)cellfun(@(f)f(),varargin);
     cleaner=onCleanup(@()run_sequentially(...
                             @()path(orig_path),...
                             @()cosmo_warning(warning_state),...
@@ -79,6 +78,13 @@ function [result,output]=helper_run_tests(args)
     fid=fopen(log_fn);
     output=fread(fid,Inf,'char=>char')';
 
+
+function run_sequentially(cell_with_funcs)
+    n=numel(cell_with_funcs);
+    for k=1:n
+        func=cell_with_funcs{k};
+        func();
+    end
 
 function delete_if_exists(fn)
     if exist(fn,'file')
