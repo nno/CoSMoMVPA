@@ -6,14 +6,14 @@ function test_suite = test_run_tests
 
     initTestSuite;
 
-function test_run_tests_passing
+function XXtest_run_tests_passing
     test_content='assert(true);';
     [result,output]=helper_test_make_and_run(test_content);
     assertTrue(result);
     assert(~isempty(findstr('OK',output)));
 
 
-function test_run_tests_failing
+function XXtest_run_tests_failing
     test_content='assert(false);';
     [result,output]=helper_test_make_and_run(test_content);
     assertFalse(result);
@@ -22,17 +22,18 @@ function test_run_tests_failing
 function test_run_tests_no_file_found_absolute_path()
     cosmo_test_dir=fileparts(mfilename('fullpath'));
     fn=cosmo_make_temp_filename(fullfile(cosmo_test_dir,'test_'),'.m');
-    % this is for debugging, should raise an exception
+    % this is for debugging, should raise an
+    % exception
     helper_run_tests({fn})
     %assertExceptionThrown(@()helper_run_tests({fn}),'');
 
 
-function test_run_tests_no_file_found_relative_path()
+function XXtest_run_tests_no_file_found_relative_path()
     fn=cosmo_make_temp_filename('test_','.m');
     assertExceptionThrown(@()helper_run_tests({fn}),'');
 
 
-function test_run_tests_missing_logfile_argument()
+function XXtest_run_tests_missing_logfile_argument()
     assertExceptionThrown(@()helper_run_tests({'-logfile'}),'');
 
 
@@ -100,7 +101,9 @@ function run_sequentially(cell_with_funcs)
         disp(func);
         func();
         disp('Running done');
+        disp(func);
     end
+    disp('All done');
 
 function delete_if_exists(fn)
     disp('deleting if exist');
