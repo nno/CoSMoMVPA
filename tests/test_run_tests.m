@@ -64,6 +64,9 @@ function [result,output]=helper_run_tests(args)
     orig_pwd=pwd();
     log_fn=tempname();
 
+    disp('state');
+    disp({warning_state,orig_path,orig_pwd,log_fn});
+
     cleaner=onCleanup(@()run_sequentially({...
                             @()path(orig_path),...
                             @()cosmo_warning(warning_state),...
@@ -74,6 +77,9 @@ function [result,output]=helper_run_tests(args)
     cosmo_warning('off');
 
     more_args={'-verbose','-logfile',log_fn,'-no_doctest'};
+    disp('before running tests');
+    disp(more_args);
+    disp(args);
     result=cosmo_run_tests(more_args{:},args{:});
     fid=fopen(log_fn);
     output=fread(fid,Inf,'char=>char')';
@@ -83,6 +89,8 @@ function run_sequentially(cell_with_funcs)
     n=numel(cell_with_funcs);
     for k=1:n
         func=cell_with_funcs{k};
+        disp('Running seq');
+        disp(func);
         func();
     end
 
