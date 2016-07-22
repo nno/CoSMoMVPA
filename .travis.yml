@@ -13,7 +13,6 @@ env:
     - COVERALLS_PARALLEL=true
   matrix:
     - TRAVIS_WITH_EXTERNALS=false TRAVIS_WITH_COVERAGE=false
-    - TRAVIS_WITH_EXTERNALS=true  TRAVIS_WITH_COVERAGE=false
 before_install:
     # to prevent IPv6 being used for APT
     - sudo bash -c "echo 'Acquire::ForceIPv4 \"true\";' > /etc/apt/apt.conf.d/99force-ipv4"

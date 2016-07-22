@@ -81,8 +81,13 @@ function [result,output]=helper_run_tests(args)
     disp(more_args);
     disp(args);
     result=cosmo_run_tests(more_args{:},args{:});
+    disp('result');
+    disp(result);
     fid=fopen(log_fn);
+    disp('open file');
     output=fread(fid,Inf,'char=>char')';
+    disp('output');
+    disp(output);
 
 
 function run_sequentially(cell_with_funcs)
@@ -92,9 +97,14 @@ function run_sequentially(cell_with_funcs)
         disp('Running seq');
         disp(func);
         func();
+        disp('Running done');
     end
 
 function delete_if_exists(fn)
+    disp('deleting if exist');
+    disp(fn);
     if exist(fn,'file')
+        disp('here');
         delete(fn);
+        disp('deleted');
     end
