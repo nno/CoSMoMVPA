@@ -22,7 +22,9 @@ function test_run_tests_failing
 function test_run_tests_no_file_found_absolute_path()
     cosmo_test_dir=fileparts(mfilename('fullpath'));
     fn=cosmo_make_temp_filename(fullfile(cosmo_test_dir,'test_'),'.m');
-    assertExceptionThrown(@()helper_run_tests({fn}),'');
+    % this is for debugging, should raise an exception
+    helper_run_tests({fn})
+    %assertExceptionThrown(@()helper_run_tests({fn}),'');
 
 
 function test_run_tests_no_file_found_relative_path()
