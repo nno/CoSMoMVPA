@@ -30,11 +30,21 @@ before_install:
     - travis_retry sudo apt-get -y -qq update
     # get Octave 4.0
     - travis_retry sudo apt-get install -y -qq software-properties-common python-software-properties libtool autoconf automake m4
-    - travis_retry sudo apt-add-repository -y ppa:octave/stable
-    - travis_retry sudo apt-get -y -qq update
-    - travis_retry sudo apt-get -y install octave
-    - travis_retry sudo apt-get -y install liboctave-dev
-    - travis_retry sudo apt-get -y -qq install octave
+    #- travis_retry sudo apt-add-repository -y ppa:octave/stable
+    #- travis_retry sudo apt-get -y -qq update
+    #- travis_retry sudo apt-get -y install octave
+    #- travis_retry sudo apt-get -y install liboctave-dev
+    #- travis_retry sudo apt-get -y -qq install octave
+
+    - travis_retry sudo apt-get install lzip libsndfile1-dev libqt5scintilla2-dev libportaudio-dev libgraphicsmagick++1-dev qttools5-dev-tools libpcre3-dev libqhull-dev libbz2-dev libhdf5-dev libfftw3-dev libglpk-dev libcurl4-gnutls-dev libfreetype6-dev libparpack2 libncurses5-dev libreadline6-dev gperf flex bison gnuplot libfltk1.3-dev libarpack++2-dev libqrupdate-dev libosmesa6-dev libqt5scintilla2-dev libqscintilla2-dev libxft-dev libqt4-opengl-dev libgl2ps-dev openjdk-7-jre lzip
+    - wget ftp://ftp.gnu.org/gnu/octave/octave-4.2.1.tar.lz 
+    - tar --lzip -xvf octave-4.2.1.tar.lz
+    - cd octave-4.2.1
+    - export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+    - ./configure --prefix=/usr/local/OCTAVE/4.2.1
+    - make
+    - sudo make install
+    - cd ..
 
     # when installing externals, get recent GCC for Octave parallel toolbox
     - if [[ "${TRAVIS_WITH_EXTERNALS}" == "true" ]]; then
