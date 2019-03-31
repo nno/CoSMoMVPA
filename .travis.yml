@@ -47,8 +47,8 @@ before_install:
     #- cd ..
 
     - sudo echo deb http://deb.debian.org/debian stretch-backports main | sudo tee /etc/apt/sources.list.d/stretch-backports.list
-    - travis_retry sudo apt update -y
-    - travis_retry sudo apt install -y -t stretch-backports octave
+    - travis_retry sudo apt update -y --allow-unauthenticated
+    - travis_retry sudo apt install -y --allow-unauthenticated -t stretch-backports octave
 
     # when installing externals, get recent GCC for Octave parallel toolbox
     - if [[ "${TRAVIS_WITH_EXTERNALS}" == "true" ]]; then
