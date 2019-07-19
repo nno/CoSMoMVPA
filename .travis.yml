@@ -13,7 +13,7 @@ env:
   global:
     - COVERALLS_PARALLEL=true
   matrix:
-    - TRAVIS_WITH_EXTERNALS=false TRAVIS_WITH_COVERAGE=false COVERALLS_PARALLEL=false
+    # - TRAVIS_WITH_EXTERNALS=false TRAVIS_WITH_COVERAGE=false COVERALLS_PARALLEL=false
     - TRAVIS_WITH_EXTERNALS=true  TRAVIS_WITH_COVERAGE=false COVERALLS_PARALLEL=false
     # - TRAVIS_WITH_EXTERNALS=true  TRAVIS_WITH_COVERAGE=true PARTITION_INDEX=1 PARTITION_COUNT=8 COVERALLS_PARALLEL=false NO_DOC_TEST=true
     # - TRAVIS_WITH_EXTERNALS=true  TRAVIS_WITH_COVERAGE=true PARTITION_INDEX=2 PARTITION_COUNT=8 COVERALLS_PARALLEL=false  NO_DOC_TEST=true
@@ -142,7 +142,7 @@ install:
     # optionally enable Octave statistics package
     # $RETRY $OCTAVE --eval "pkg('install','-forge','statistics');";
     - if [[ " $EXTERNALS " = *" octave_pkg_statistics "* ]]; then
-        $RETRY sudo apt-get -y -qq octave-statistics;
+        $RETRY sudo apt-get -y -qq install octave-statistics;
       fi
     # optionally enable Octave miscellaneous package
     # (the "general" package is required for the "miscellaneous" package)
