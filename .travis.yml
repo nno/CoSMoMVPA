@@ -224,16 +224,12 @@ install:
 
     # optionally install gifti library
     - if [[ " $EXTERNALS " = *" gifti "* ]]; then
-          GIFTI_VERSION=1.8;
-          GIFTI_NAME=gifti-${GIFTI_VERSION};
-          rm -rf ${GIFTI_NAME}.zip;
-          wget http://www.artefact.tk/software/matlab/gifti/${GIFTI_NAME}.zip;
-          unzip ${GIFTI_NAME}.zip;
-          $OCTAVE --eval "cd('${PTH}/${GIFTI_NAME}/@gifti/private');
+          git clone https://github.com/gllmflndn/gifti.git;
+          $OCTAVE --eval "cd('gifti/@gifti/private');
                           mex('zstream.c');
                           addpath('${PTH}/${GIFTI_NAME}');
                           savepath();";
-          ls ${PTH}/${GIFTI_NAME}/@gifti/private;
+          ls gifti/@gifti/private;
       fi
 
     # disable "more"
