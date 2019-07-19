@@ -227,9 +227,9 @@ install:
           git clone https://github.com/gllmflndn/gifti.git;
           $OCTAVE --eval "cd('gifti/@gifti/private');
                           mex('zstream.c');
-                          addpath('${PTH}/${GIFTI_NAME}');
+                          addpath('${PTH}/gifti');
                           savepath();";
-          ls gifti/@gifti/private;
+          ls ${PTH}/gifti/@gifti/private;
       fi
 
     # disable "more"
