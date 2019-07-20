@@ -231,6 +231,7 @@ install:
                           addpath('${PTH}/gifti');
                           savepath();";
           ls ${PTH}/gifti/@gifti/private;
+          rm ${PTH}/gifti/@gifti/private/zstream.m;
       fi
 
     # disable "more"
