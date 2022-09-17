@@ -116,6 +116,7 @@ install:
                      surfing
                      fieldtrip
                      libsvm
+                     gifti
                      octave_pkg_struct
                      octave_pkg_parallel
                      octave_pkg_statistics
